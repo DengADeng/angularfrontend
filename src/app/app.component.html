@@ -1,0 +1,22 @@
+<nav>
+  <p class="logo"><a routerLink="/" routerLinkActive="active">TaoBao</a></p>
+  <div class="nav-form">
+    <form>
+      <input type="search" class="nav-search" placeholder="裤子"/>
+      <button type="submit" class="nav-submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+  </div>
+  <div class="nav-login">
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <p id="login" class="hidden"><span><span><a routerLink="/login" routerLinkActive="active">登录</a></span> / <span><a routerLink="/register" routerLinkActive="active">注册</a></span></span></p>
+    <p id="userInfo" class=""><a routerLink="userAdmin" routerLinkActive="active">username: {{userInfo}}</a>/<a href="/" (click)="logout()">logout</a></p>
+  </div>
+  <div class="shopping-cart">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+    <span><a routerLink="/cart" routerLinkActive="active">购物车</a><span class="itemNum" *ngIf="orderService.numInfo > 0">{{orderService.numInfo}}</span></span>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

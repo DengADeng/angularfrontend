@@ -1,0 +1,30 @@
+<div id="cart-main">
+<h2>Cart</h2>
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>Image</th>
+    <th>Item Number</th>
+    <th>Price</th>
+    <th>Number</th>
+    <th>Total Price</th>
+  </tr>
+  </thead>
+  <tbody class="item-by">
+  <tr *ngFor="let item of itemInfo; let i = index" id="cart-item">
+    <td><img src="{{item.image}}" alt="item" /></td>
+    <td><a [routerLink]="['/productDetail', item._id]">{{item._id}}</a></td>
+    <td>{{item.price | currency}}</td>
+    <td>
+      <input (change)="chageValue($event,i,item);" type="number" [value]="item.qty">
+    </td>
+    <td id="value">{{item.price * item.qty}}</td>
+
+  </tr>
+  </tbody>
+</table>
+<div class="checkout">
+  <p id="totalPrice">TotalPrice: {{total}}</p>
+  <p><button class="btn btn-primary" type="submit" (click)="checkout()">Checkout</button></p>
+</div>
+</div>

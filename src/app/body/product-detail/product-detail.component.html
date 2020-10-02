@@ -1,0 +1,43 @@
+<div>
+  <div class="back-to-result">
+    <a (click)="goBack()">Back</a>
+  </div>
+<div class="details">
+  <div class="details-images">
+    <img src='{{item.image}}' alt="product" />
+  </div>
+  <div class="details-info">
+    <ul>
+      <li>
+        <h4>ItemName: {{item.name}}</h4>
+      </li>
+      <li>
+        Price: {{item.price}}
+      </li>
+      <li>
+        Description: {{item.description}}
+      </li>
+      <li>
+        <p>Brand: {{item.brand}}</p>
+        <p>CountInStock: {{item.countInStock}}</p>
+      </li>
+
+    </ul>
+  </div>
+  <div class="details-action">
+    <ul>
+      <li>
+        Price:  {{item.price}}
+      </li>
+      <li>
+        <label for="qty">Number of items you would like to buy:</label>
+        <input id="qty" type="number" name="qty" (change) = 'changeQty($event)'>
+      </li>
+      <li>
+         <button (click)="addToCart(item)" class="button primary">Add to Cart</button>
+
+      </li>
+    </ul>
+  </div>
+</div>
+</div>

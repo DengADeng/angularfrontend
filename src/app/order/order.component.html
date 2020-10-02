@@ -1,0 +1,31 @@
+<h2>Order id: {{id}}</h2>
+<h2>User id: {{user}}</h2>
+<h2>User name: {{username}}</h2>
+<h2 (click) = 'getData()'>order detail</h2>
+<table id='order-bd' class="hidden table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>Image</th>
+    <th>Item Number</th>
+    <th>Price</th>
+    <th>Number</th>
+    <th>Total Price</th>
+  </tr>
+  </thead>
+  <tbody class="item-by">
+  <tr *ngFor="let item of itemInfo; let i = index" id="cart-item">
+    <td><img src="{{item.image}}" alt="item" /></td>
+    <td><a [routerLink]="['/productDetail', item._id]">{{item._id}}</a></td>
+    <td>{{item.price | currency}}</td>
+    <td>
+       {{item.numInfo}}
+    </td>
+    <td id="value">{{item.price * item.numInfo}}</td>
+
+  </tr>
+  </tbody>
+</table>
+<div class="checkout">
+  <p id="totalPrice">TotalPrice: {{total}}</p>
+</div>
+

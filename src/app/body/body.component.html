@@ -1,0 +1,13 @@
+<section class="shopping-list">
+<div class="shopping-item" *ngFor="let item of itemList">
+  <img src={{item.image}} alt="img" />
+  <p class="name mt-4"><a [routerLink]="['/productDetail', item._id]">{{item.name}}</a></p>
+  <p>Brand: {{item.brand}}</p>
+  <p>CountInStock: {{item.countInStock}}</p>
+  <div class="shopping-detail">
+    <p class="price">{{item.price | currency}}</p>
+    <p class="stock">Category： {{item.category}}</p>
+  </div>
+  <button class="btn btn-default" (click)="addToCart(item)">Add TO Cart</button>
+</div>
+</section>

@@ -1,0 +1,16 @@
+a {
+  color: #c0c0c0;
+}
+.tab-card {
+  border: dashed 1px #c0c0c0;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+ul{
+  list-style: none;
+}
+.user-card{
+  border: dashed 1px #c0c0c0;
+  margin-top: 2rem;
+  padding: 2rem;
+}

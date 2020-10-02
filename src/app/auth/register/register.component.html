@@ -1,0 +1,17 @@
+<h2>Register</h2>
+<form (submit)="register(registerForm.value)" #registerForm="ngForm">
+  <div class="form-group">
+    <label for="name">Username</label>
+    <input type="text" class="form-control" id="name" name="name" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" name="email" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="password">password</label>
+    <input type="password" class="form-control" id="password" name="password" ngModel>
+  </div>
+  <button class="btn btn-primary" type="submit">Click to register</button>
+  <a routerLink="/login" routerLinkActive="true" class="btn btn-link">login</a>
+</form>

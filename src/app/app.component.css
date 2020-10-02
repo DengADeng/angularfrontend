@@ -1,0 +1,59 @@
+a {
+  cursor: pointer;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #FF5000;
+  height: 8rem;
+}
+nav .logo {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.nav-form {
+  width: 40%;
+}
+.nav-search {
+  width: 45rem;
+  height: 3rem;
+  padding: 1rem;
+}
+.nav-submit {
+  width: 5rem;
+  height: 3rem;
+  color: #FF5000;
+}
+.nav-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+.nav-login i{
+  margin: 1rem;
+  font-size: 3rem;
+  color: white;
+}
+.nav-login p {
+  padding-top: 1rem;
+}
+.shopping-cart{
+  display: flex;
+  flex-direction: column;
+  font-size: 3.5rem;
+  margin-right: 3rem;
+}
+.shopping-cart span{
+  font-size: 1.3rem;
+  color: white;
+}
+.itemNum {
+  border: solid 1px #ff8000;
+  color: black;
+  border-radius: 50%;
+  padding: 1px;
+  background: grey;
+}

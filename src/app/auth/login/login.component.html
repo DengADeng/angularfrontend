@@ -1,0 +1,15 @@
+<div>
+  <h2>Login</h2>
+  <form (submit)="login(loginForm.value)" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" name="email" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="password">password</label>
+      <input type="password" class="form-control" id="password" name="password" ngModel>
+    </div>
+    <button class="btn btn-primary" type="submit">Click to Login</button>
+    <a routerLink="/register" class="btn btn-link"> Register</a>
+  </form>
+</div>

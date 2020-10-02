@@ -1,0 +1,105 @@
+<div class="container">
+  <h2>Admin</h2>
+  <ul id="myTab" class="nav nav-tabs">
+    <li *ngFor="let t of tabList; let i = index" class="{{ i ==0? 'active': ''}}">
+      <a (click)="tab(i)" data-toggle="tab">
+        {{t}}
+      </a>
+    </li>
+  </ul>
+  <div id="myTabContent" class="tab-content">
+    <div class="tab-card" id="userInf">
+      <p>User Info List</p>
+      <ul>
+        <li *ngFor="let user of userINFO;let i = index;" class="user-card">
+          <p>user {{i}}</p>
+          <p>name: {{user.name}}</p>
+          <p>id: {{user._id}}</p>
+          <p>email: {{user.email}}</p>
+        </li>
+      </ul>
+
+    </div>
+    <div class="tab-card hidden" id="userList">
+      
+      <p>ProductList</p>
+      <ul>
+        <li *ngFor="let product of productsInfo; let i = index" class="user-list user-card">
+          <p>product: {{i}}</p>
+          <p>name: {{product.name}}</p>
+          <p>price: {{product.price}}</p>
+          <p>brand: {{product.brand}}</p>
+          <p>category: {{product.category}}</p>
+          <p>image: {{product.image}}</p>
+          <p>countInStock: {{product.countInStock}}</p>
+          <p>description: {{product.description}}</p>
+          <button class="btn btn-default" (click)="change(i)">Change</button>
+          <button class="btn btn-default" (click)="delete(i)">Delete</button>
+          
+          <div class="mt-4 hidden hidden-product">
+            <p>product: <input  type='input'  [(ngModel)] = productsInfo[i].name /></p>
+      
+            <p>price: <input  type='input' value= productsInfo.price  [(ngModel)] =  productsInfo[i].price/></p>
+            <p>brand: <input  type='input' value= productsInfo.brand  [(ngModel)] = productsInfo[i].brand /></p>
+            <p>category: <input  type='input' value= productsInfo.category  [(ngModel)] = productsInfo[i].category /></p>
+            <p>image: <input  type='input' style='width: 50rem' value=productsInfo.image [(ngModel)] =productsInfo[i].image /></p>
+            <p>countInStock: <input  type='input' value=productsInfo.countInStock  [(ngModel)] = productsInfo[i].countInStock /></p>
+            <p>description: <input  type='input' value= productsInfo.description  [(ngModel)] =productsInfo[i].description /></p>
+            <button class='updateBtn btn btn-default' (click)='update(i)'>Update</button>        
+        </div>
+        
+        </li>
+      </ul>
+      <div class="row user-card">
+        <h2>Add Product</h2>
+        <form (submit)="addProduct(productForm.value)" #productForm="ngForm">
+          <div class="form-group">
+            <label for="name">itemName</label>
+            <input type="text" name="name" class="form-control" id="name" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="price">price</label>
+            <input type="text"  name="price" class="form-control" id="price" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="image">image</label>
+            <input type="text"  name="image" class="form-control" id="image" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="brand">brand</label>
+            <input type="text"  name="brand" class="form-control" id="brand" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="category">category</label>
+            <input type="text"  name="category" class="form-control" id="category" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="countInStock">countInStock</label>
+            <input type="text"  name="countInStock" class="form-control" id="countInStock" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="description">description</label>
+            <input type="text"  name="description" class="form-control" id="description" ngModel>
+          </div>
+          <div>
+            <button class="btn btn-primary" type="submit">Add</button>
+            <button class="btn btn-primary" type="button">Clear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="tab-card hidden" id="productList">
+      <p>OrderList</p>
+      <ul>
+        <li *ngFor="let order of ordersInfo; let i = index" class="order-list user-card">
+          <p>order: {{i}}</p>
+          <p>order id: <a [routerLink]="['/order', order._id]">{{order._id}}</a></p>
+          <p>user_id: {{order.user_id}}</p>
+          <p>user_name: {{order.user_name}}</p>
+          <p>Created Date: {{order.date}}</p>
+          <p>TotalPrice: {{order.price}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
