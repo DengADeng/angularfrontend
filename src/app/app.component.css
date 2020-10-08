@@ -1,3 +1,4 @@
+
 a {
   cursor: pointer;
 }
@@ -16,14 +17,13 @@ nav .logo {
 .nav-form {
   width: 40%;
 }
+
 .nav-search {
-  width: 45rem;
-  height: 3rem;
-  padding: 1rem;
+  padding: .5rem;
 }
+
 .nav-submit {
-  width: 5rem;
-  height: 3rem;
+  padding: .5rem 1rem;
   color: #FF5000;
 }
 .nav-login {
@@ -57,3 +57,103 @@ nav .logo {
   padding: 1px;
   background: grey;
 }
+
+/* media query navigation
+ /*超小型设备（小于768px）*/
+ @media screen and (max-width:768px){
+
+   a {
+     text-decoration: none;
+   }
+   ul {
+     list-style: none;
+   }
+   nav {
+     width: 100%;
+     
+   }
+   
+   .nav-form {
+     display: none;
+   }
+   .nav-login {
+    display: none;
+   }
+   .shopping-cart{
+     display: none;
+   }
+   .container {
+     width: 100%;
+     
+     
+   }
+   .shopping-list {
+     margin: 0;
+   }
+   .submenu {
+     margin-right: 5px;
+     position: relative;
+   }
+   .submenu>i {
+     font-size: 3rem;
+   }
+   
+   .submenu-list {
+     position: absolute;
+     background-color: #FF5000;
+     width: 23rem;
+     right: 0rem;
+     font-size: 1.5rem;
+   }
+   
+   .submenu-list li {
+     border: 1px solid #ff8000;
+     padding: .5rem;
+   }
+   .submenu-list i {
+     font-size: 1.5rem;
+   }
+   .submenu-list p {
+     display: inline;
+     padding: 0 .5rem;
+   }
+   
+ }
+  /*小型设备（平板电脑，768px起）*/
+ @media only screen and (min-width:768px) and (max-width:992px){
+  nav {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+  }
+  .submenu {
+    display: none;
+  }
+ }
+  
+  /*中型设备（台式电脑，992px起）*/
+ @media only screen and (min-width:992px) and (max-width:1200px){
+  nav {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+  }
+  .submenu {
+    display: none;
+  }
+ }
+ 
+ /*大型设备（大台式电脑，1200px起）*/
+ @media  only screen and (min-width:1200px){
+  nav {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+  }
+  .submenu {
+    display: none;
+  }
+ }

@@ -1,20 +1,36 @@
-<nav>
-  <p class="logo"><a routerLink="/" routerLinkActive="active">TaoBao</a></p>
-  <div class="nav-form">
+<nav class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <p class="logo col-lg-2 col-md-2 col-sm-2 col-xs-2"><a routerLink="/" routerLinkActive="active">TaoBao</a></p>
+  <div class="nav-form col-lg-6 col-md-6 col-sm-4 col-xs-6">
     <form>
-      <input type="search" class="nav-search" placeholder="裤子"/>
+      <input type="search" class="nav-search col-lg-8 col-md-8 col-sm-8 col-xs-8" placeholder="shirt"/>
       <button type="submit" class="nav-submit" ><i class="fa fa-search" aria-hidden="true"></i></button>
     </form>
   </div>
   <div class="nav-login">
     <i class="fa fa-user" aria-hidden="true"></i>
-    <p id="login" class="hidden"><span><span><a routerLink="/login" routerLinkActive="active">登录</a></span> / <span><a routerLink="/register" routerLinkActive="active">注册</a></span></span></p>
-    <p id="userInfo" class=""><a routerLink="userAdmin" routerLinkActive="active">username: {{userInfo}}</a>/<a href="/" (click)="logout()">logout</a></p>
+    <p *ngIf = "this.authService.loggedIn && !this.authService.userInfo"><a routerLink="/userAdmin">username: {{userInfo}}</a>/<a href="/" (click)="logout()">logout</a></p>
+    <p *ngIf = "this.authService.userInfo && this.authService.loggedIn"><a routerLink="/userAdmin">username: {{this.authService.userInfoName}}</a>/<a href="/" (click)="logout()">logout</a></p>
+    <p *ngIf = "!this.authService.loggedIn"><span><span><a routerLink="/login" routerLinkActive="active">登录</a></span> / <span><a routerLink="/register" routerLinkActive="active">注册</a></span></span></p>
   </div>
-  <div class="shopping-cart">
+  <div class="shopping-cart ">
     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
 
     <span><a routerLink="/cart" routerLinkActive="active">购物车</a><span class="itemNum" *ngIf="orderService.numInfo > 0">{{orderService.numInfo}}</span></span>
+  </div>
+  <div class="submenu" (click) = "displaySubmenu()" (mouseleave) = "displayNone()">
+    <i class="fa fa-bars" aria-hidden="true" ></i>
+    <ul class="submenu-list hidden" >
+      <li>
+        <i class="fa fa-user" aria-hidden="true" ></i>
+        <p *ngIf = "this.authService.loggedIn && !this.authService.userInfo"><a routerLink="/userAdmin">username: {{userInfo}}</a>/<a href="/" (click)="logout()">logout</a></p>
+        <p *ngIf = "this.authService.userInfo && this.authService.loggedIn"><a routerLink="/userAdmin">username: {{this.authService.userInfoName}}</a>/<a href="/" (click)="logout()">logout</a></p>
+        <p *ngIf = "!this.authService.loggedIn"><span><span><a routerLink="/login" routerLinkActive="active">登录</a></span> / <span><a routerLink="/register" routerLinkActive="active">注册</a></span></span></p>
+      </li>
+      <li>
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          <p><a routerLink="/cart" routerLinkActive="active">购物车</a><span class="itemNum" *ngIf="orderService.numInfo > 0">{{orderService.numInfo}}</span></p>
+      </li>
+    </ul>
   </div>
 </nav>
 <div class="container">

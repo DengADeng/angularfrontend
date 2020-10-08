@@ -8,7 +8,7 @@ import {RouterModule} from "@angular/router";
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {LocalStorage} from "./utils/localstore";
 import { UserAdminComponent } from './user-admin/user-admin.component';
@@ -18,6 +18,7 @@ import {ItemStorage} from "./utils/itemCart";
 import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './order/order.component';
 import { OrderDetailComponent } from './order/order-detail/order-detail.component';
+import { EqualValidator } from './validator/equal-validator.directive';
 
 
 
@@ -35,6 +36,7 @@ import { OrderDetailComponent } from './order/order-detail/order-detail.componen
     CartComponent,
     OrderComponent,
     OrderDetailComponent,
+    EqualValidator,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { OrderDetailComponent } from './order/order-detail/order-detail.componen
     RouterModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [LocalStorage,ItemStorage],
   bootstrap: [AppComponent],

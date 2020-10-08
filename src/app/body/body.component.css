@@ -34,3 +34,26 @@
   font-size: 3rem;
   font-weight: bold;
 }
+
+/* media query navigation
+ /*超小型设备（小于768px）*/
+ @media screen and (max-width:768px){
+
+  .shopping-list {
+    margin: 0;
+  }
+}
+ /*小型设备（平板电脑，768px起）*/
+@media only screen and (min-width:768px) and (max-width:992px){
+
+}
+ 
+ /*中型设备（台式电脑，992px起）*/
+@media only screen and (min-width:992px) and (max-width:1200px){
+
+}
+
+/*大型设备（大台式电脑，1200px起）*/
+@media  only screen and (min-width:1200px){
+
+}

@@ -1,17 +1,38 @@
 <h2>Register</h2>
-<form (submit)="register(registerForm.value)" #registerForm="ngForm">
+<form (submit)="register(registerForm.value)" [formGroup] = "registerForm">
   <div class="form-group">
     <label for="name">Username</label>
-    <input type="text" class="form-control" id="name" name="name" ngModel>
+    <input type="text" class="form-control" id="name" name="name" formControlName="name">
+    <div [hidden]="registerForm.controls.name.valid || registerForm.controls.name.pristine" class="alert alert-danger">
+      <p *ngIf="registerForm.controls.name.errors?.minlength">姓名最小长度为5</p>
+      <p *ngIf="registerForm.controls.name.errors?.required">必须输入姓名</p>
+    </div>
   </div>
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="text" class="form-control" id="email" name="email" ngModel>
+    <input type="text" class="form-control" id="email" name="email" formControlName="email">
+    <div [hidden]="registerForm.controls.email.valid || registerForm.controls.email.pristine" class="alert alert-danger">
+      <p *ngIf="registerForm.controls.email.errors?.pattern">不是有效的邮箱地址</p>
+      <p *ngIf="registerForm.controls.email.errors?.required">必须输入邮箱</p>
+  </div>
+  <p *ngIf="this.validEmail" class="alert alert-danger">邮箱已被注册</p>
   </div>
   <div class="form-group">
     <label for="password">password</label>
-    <input type="password" class="form-control" id="password" name="password" ngModel>
+    <input type="password" class="form-control" id="password" name="password" formControlName="password" validateEqual="repassword" reverse="true">
+    <div [hidden]="registerForm.controls.password.valid || registerForm.controls.password.pristine" class="alert alert-danger">
+      <p *ngIf="registerForm.controls.password.errors?.required">必须输入密码</p>
+      <p *ngIf="registerForm.controls.password.errors?.minlength">密码最少为5位</p>
   </div>
-  <button class="btn btn-primary" type="submit">Click to register</button>
+  </div>
+  <div class="form-group">
+    <label for="repassword">repassword</label>
+    <input type="password" validateEqual="password" class="form-control" id="repassword" name="repassword" formControlName="repassword">
+    <div [hidden]="registerForm.controls.repassword.valid || registerForm.controls.repassword.pristine" class="alert alert-danger">
+      <p >密码不匹配</p>
+      
+  </div>
+  </div>
+  <button class="btn btn-primary" type="submit" [disabled] = "!registerForm.valid">Click to register</button>
   <a routerLink="/login" routerLinkActive="true" class="btn btn-link">login</a>
 </form>

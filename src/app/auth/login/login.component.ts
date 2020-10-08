@@ -9,7 +9,8 @@ import {LocalStorage} from "../../utils/localstore";
 })
 export class LoginComponent implements OnInit {
 
-  response;
+  response:any;
+  userStatus: Boolean = false;
 
   constructor(public authService: AuthService,
               private router: Router,
@@ -25,11 +26,20 @@ export class LoginComponent implements OnInit {
   login(user): void{
     this.authService.login(user)
       .subscribe((res) =>{
-        this.response = res;
-        if (res.loggedIn){
-          this.router.navigate(['/']);
-        }
-        location.reload();
+        //console.log(res);
+        this.response =res;
+        try{
+          if(res._id){
+            this.userStatus = false;
+            this.router.navigate(['/']);
+          }else{
+            this.userStatus= true;
+          }
+        }catch(error){
+          this.userStatus= true;
+        }        
+        
+       
       });
   }
 

@@ -1,4 +1,4 @@
-<section class="shopping-list">
+<section class="shopping-list col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="shopping-item" *ngFor="let item of itemList">
   <img src={{item.image}} alt="img" />
   <p class="name mt-4"><a [routerLink]="['/productDetail', item._id]">{{item.name}}</a></p>
