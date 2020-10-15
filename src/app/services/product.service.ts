@@ -100,4 +100,15 @@ export class ProductService {
         }
       }));
   }
+
+  searchProduct(product): Observable<any>{
+    console.log(product);
+    const productName= product['search'];
+    return this.http.get(this.API_URL + 'api/products/product?name='+ productName)
+    .pipe(tap(res =>{
+      if(res){
+        return res;
+      }})
+    )
+  }
 }

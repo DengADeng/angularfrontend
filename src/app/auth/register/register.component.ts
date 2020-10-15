@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
       password: ['',[Validators.required, Validators.minLength(5)]],
       repassword:['',[Validators.required, Validators.minLength(5)]],
     });
-    this.registerForm.controls['email'].valueChanges.pipe(debounceTime(1000)).subscribe((res)=>{
+    this.registerForm.controls['email'].valueChanges.pipe(debounceTime(2000)).subscribe((res)=>{
       //console.log(res);
       this.authService.checkEmail(res)
       .subscribe((res)=>{

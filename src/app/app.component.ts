@@ -5,6 +5,7 @@ import { ItemStorage } from './utils/itemCart';
 import { OrderService } from './services/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +16,15 @@ export class AppComponent implements OnInit, OnChanges {
   userInfo: Observable<any>;
   title = 'finalproject';
   itemNum :any;
-  width: any;
-  height: any;
+  searchForm: FormGroup;
+  searchList=[];
   constructor(
     public authService: AuthService,
-    public orderService: OrderService,
-    private activeRoute: ActivatedRoute,
-    private el: ElementRef, 
-    private renderer: Renderer2
+    private orderService: OrderService,
+    private fb: FormBuilder,
+    private productService: ProductService,
+    private renderer2: Renderer2,
+    private elementRef: ElementRef,
   ){
     this.orderService.num.subscribe(res=>{this.itemNum = this.orderService.num});
   }
@@ -31,6 +33,9 @@ export class AppComponent implements OnInit, OnChanges {
     this.authService.checklogin();
     this.itemNum = ItemStorage.getTotalCount();
     this.checkLogin();
+    this.searchForm = this.fb.group({
+      search:[]
+    });
    // console.log(this.authService.userInfo['name'])
     //this.userInfo = this.authService.userInfo;
   }
@@ -53,10 +58,20 @@ export class AppComponent implements OnInit, OnChanges {
     //console.log(this.authService.loggedIn);
   }
 
-  displaySubmenu() {
-    this.renderer.removeClass(this.el.nativeElement.querySelector('.submenu-list'), 'hidden');
+  search(data:any){
+    this.searchList = [];
+    this.productService.searchProduct(data).subscribe((res)=>{
+      res.forEach((e,i) => {
+        this.searchList.push({name: e.name, href:'http://fuzhou123.s3-website.us-east-2.amazonaws.com/productDetail/'+ e._id});
+      });
+      //console.log(this.searchList[0].name);
+      const ul = this.elementRef.nativeElement.querySelectorAll('.nav-ul')[0];
+      this.renderer2.removeClass(ul,'hidden');
+    })
   }
-  displayNone() {
-    this.renderer.addClass(this.el.nativeElement.querySelector('.submenu-list'), 'hidden');
+  hiddenArea(){
+    const ul = this.elementRef.nativeElement.querySelectorAll('.nav-ul')[0];
+    this.renderer2.addClass(ul,'hidden');
   }
+  
 }

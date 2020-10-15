@@ -7,3 +7,24 @@ a {
 nav {
   color: #777;
 }
+.search-area {
+  position: relative;
+}
+.nav-ul {
+  border-bottom: 1px solid #777;
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+  
+}
+.nav-ul li{
+  padding: 0.1rem;
+  background-color: #ffffff;
+  color: #777;
+  border-top: 1px solid #777;
+  border-left: 1px solid #777;
+  border-right: 1px solid #777;
+}
+.nav-ul li:hover{
+  background-color: bisque;
+}
