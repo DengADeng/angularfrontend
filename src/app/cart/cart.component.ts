@@ -87,4 +87,11 @@ export class CartComponent implements OnInit {
     localStorage.setItem('cart',JSON.stringify(tem));
     this.orderService.changeNum();
   }
+
+  deleteItems(i):void {
+    //console.log(i,this.itemInfo);
+    ItemStorage.removeGoods(this.itemInfo[i]._id);
+    this.itemInfo.splice(i,1);
+    
+  }
 }

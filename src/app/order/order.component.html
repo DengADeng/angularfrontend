@@ -2,6 +2,7 @@
 <h2>User id: {{user}}</h2>
 <h2>User name: {{username}}</h2>
 <h2 (click) = 'getData()'>order detail</h2>
+<div  class="table-responsive">
 <table id='order-bd' class="hidden table table-bordered table-striped">
   <thead>
   <tr>
@@ -25,6 +26,7 @@
   </tr>
   </tbody>
 </table>
+</div>
 <div class="checkout">
   <p id="totalPrice">TotalPrice: {{total}}</p>
 </div>

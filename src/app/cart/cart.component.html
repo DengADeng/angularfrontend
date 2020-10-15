@@ -1,28 +1,31 @@
 <div id="cart-main">
 <h2>Cart</h2>
-<table class="table table-bordered table-striped">
+<div  class="table-responsive">
+<table class="table table-bordered table-striped ">
   <thead>
-  <tr>
+  <tr class="">
     <th>Image</th>
     <th>Item Number</th>
     <th>Price</th>
     <th>Number</th>
     <th>Total Price</th>
+    <th>Delete item</th>
   </tr>
   </thead>
-  <tbody class="item-by">
+  <tbody class="">
   <tr *ngFor="let item of itemInfo; let i = index" id="cart-item">
-    <td><img src="{{item.image}}" alt="item" /></td>
-    <td><a [routerLink]="['/productDetail', item._id]">{{item._id}}</a></td>
-    <td>{{item.price | currency}}</td>
-    <td>
+    <td data-label="Image"><img src="{{item.image}}" alt="item" /></td>
+    <td data-label="Item Number"><a [routerLink]="['/productDetail', item._id]">{{item._id}}</a></td>
+    <td data-label="Price">{{item.price | currency}}</td>
+    <td data-label="Number">
       <input (change)="chageValue($event,i,item);" type="number" [value]="item.qty">
     </td>
-    <td id="value">{{item.price * item.qty}}</td>
-
+    <td data-label="Total Price" id="value">{{item.price * item.qty}}</td>
+    <td data-label="Delete item"><button class="btn btn-danger" (click)='deleteItems(i)'>delete</button></td>
   </tr>
   </tbody>
 </table>
+</div>
 <div class="checkout">
   <p id="totalPrice">TotalPrice: {{total}}</p>
   <p><button class="btn btn-primary" type="submit" (click)="checkout()">Checkout</button></p>
